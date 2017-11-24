@@ -22,6 +22,14 @@
 // SOFTWARE.
 ////////////////////////////////////////////////////////////////////////////////
 
+#include <cstring>
+#include <cstdio>
+#include <fstream>
+#include <streambuf>
+#include <sstream>
+#include <string>
+#include <memory>
+
 #include "acl/core/memory.h"
 #include "acl/core/range_reduction_types.h"
 #include "acl/compression/skeleton.h"
@@ -31,15 +39,6 @@
 #include "acl/sjson/sjson_writer.h"
 
 #include "acl/algorithm/uniformly_sampled/algorithm.h"
-
-#include <conio.h>
-#include <cstring>
-#include <cstdio>
-#include <fstream>
-#include <streambuf>
-#include <sstream>
-#include <string>
-#include <memory>
 
 #if !defined(_WINDOWS_)
 // The below excludes some other unused services from the windows headers -- see windows.h for details.
@@ -88,7 +87,6 @@
 #define NOPROXYSTUB
 #define NORPC
 
-#include <windows.h>
 #endif    // _WINDOWS_
 
 using namespace acl;
@@ -138,7 +136,7 @@ struct Options
 	{
 		std::FILE* file = nullptr;
 		if (output_stats_filename != nullptr)
-			fopen_s(&file, output_stats_filename, "w");
+			file = fopen(output_stats_filename, "w");
 		output_stats_file = file != nullptr ? file : stdout;
 	}
 };
@@ -261,6 +259,11 @@ static void try_algorithm(const Options& options, Allocator& allocator, const An
 	
 }
 
+static bool IsDebuggerPresent()
+{
+	return false;
+}
+
 static bool read_clip(Allocator& allocator, const char* filename,
 					  std::unique_ptr<AnimationClip, Deleter<AnimationClip>>& clip,
 					  std::unique_ptr<RigidSkeleton, Deleter<RigidSkeleton>>& skeleton)
@@ -378,6 +381,11 @@ static int main_impl(int argc, char** argv)
 	else
 		exec_algos(nullptr);
 
+	return 0;
+}
+
+static int _kbhit()
+{
 	return 0;
 }
 

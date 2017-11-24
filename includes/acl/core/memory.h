@@ -72,7 +72,7 @@ namespace acl
 
 		virtual void* allocate(size_t size, size_t alignment = DEFAULT_ALIGNMENT)
 		{
-			return _aligned_malloc(size, alignment);
+			return aligned_alloc(size, alignment);
 		}
 
 		virtual void deallocate(void* ptr, size_t size)
@@ -80,7 +80,7 @@ namespace acl
 			if (ptr == nullptr)
 				return;
 
-			_aligned_free(ptr);
+			free(ptr);
 		}
 	};
 

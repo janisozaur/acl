@@ -1,6 +1,15 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
-#include <conio.h>
+
+static int _kbhit()
+{
+	return 0;
+}
+
+static bool IsDebuggerPresent()
+{
+	return false;
+}
 
 int main(int argc, char* argv[])
 {
