@@ -19,6 +19,7 @@ target_compile_options(acl_unit_tests PRIVATE /Oi)				# Generate intrinsic funct
 target_compile_options(acl_unit_tests PRIVATE /wd4100)			# unreferenced formal parameter
 target_compile_options(acl_unit_tests PRIVATE /wd4324)			# structure was padded due to alignment specified
 target_compile_options(acl_unit_tests PRIVATE /wd4127)			# conditional expression is constant
+target_compile_options(acl_unit_tests PRIVATE /permissive-)
 
 if(USE_AVX_INSTRUCTIONS)
 	target_compile_options(acl_unit_tests PRIVATE "/arch:AVX")
