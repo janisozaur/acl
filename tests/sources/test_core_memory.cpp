@@ -16,7 +16,7 @@ TEST_CASE("memcpy_bits", "[core][memory]")
 	memcpy_bits(&dest, 0, &src, 2, 5);
 	REQUIRE(dest == byte_swap(uint64_t(0xE700FF0000000000ull)));
 
-	dest = byte_swap(uint64_t(0x0F00FF0000000000ull));
+	dest = byte_swap(uint64_t(0x0F00FF0000000001ull));
 	src = byte_swap(uint64_t(0x3800000000000000ull));
 	memcpy_bits(&dest, 1, &src, 2, 5);
 	REQUIRE(dest == byte_swap(uint64_t(0x7300FF0000000000ull)));
