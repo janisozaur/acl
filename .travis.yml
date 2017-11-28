@@ -1,7 +1,7 @@
 language: cpp
 
-env:
-  matrix:
+matrix:
+  env:
     - CONFIG=Debug
     - CONFIG=Release
 
