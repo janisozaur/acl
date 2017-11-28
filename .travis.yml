@@ -1,9 +1,11 @@
 language: cpp
 
-matrix:
-  env:
+env:
+  matrix:
     - CONFIG=Debug
     - CONFIG=Release
+
+matrix:
   include:
     - os: linux
       env: MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
