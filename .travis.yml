@@ -9,41 +9,33 @@ matrix:
   include:
     # Linux gcc5
     - os: linux
-      env: COMPILER=gcc5 PACKAGES="g++-5 g++-5-multilib g++-multilib ccache"
+      env: COMPILER=g++-5 PACKAGES="g++-5 g++-5-multilib g++-multilib ccache"
 
     # Linux gcc6
     - os: linux
-      env: COMPILER=gcc6 PACKAGES="g++-6 g++-6-multilib g++-multilib ccache"
+      env: COMPILER=g++-6 PACKAGES="g++-6 g++-6-multilib g++-multilib ccache"
 
     # Linux gcc7
     - os: linux
-      env: COMPILER=gcc7 PACKAGES="g++-7 g++-7-multilib g++-multilib ccache"
+      env: COMPILER=g++-7 PACKAGES="g++-7 g++-7-multilib g++-multilib ccache"
 
     # Linux gcc8
     - os: linux
-      env: COMPILER=gcc8 PACKAGES="g++-8 g++-8-multilib g++-multilib ccache"
+      env: COMPILER=g++-8 PACKAGES="g++-8 g++-8-multilib g++-multilib ccache"
 
     # Linux clang4
     - os: linux
-      env: COMPILER=clang4 PACKAGES="clang-4.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
+      env: COMPILER=clang++-4.0 PACKAGES="clang-4.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # Linux clang5
     - os: linux
-      env: COMPILER=clang5 PACKAGES="clang-5.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
+      env: COMPILER=clang++-5.0 PACKAGES="clang-5.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # Linux clang6
     - os: linux
-      env: COMPILER=clang6 PACKAGES="clang-6.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
+      env: COMPILER=clang++-6.0 PACKAGES="clang-6.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
-    # OS X xcode8
-    - os: osx
-      osx_image: xcode8.3
-      env: COMPILER=osx
 
-    # OS X xcode9
-    - os: osx
-      osx_image: xcode9.4
-      env: COMPILER=osx
 
 before_install:
     - if [ "$COMPILER" = "clang4" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
@@ -65,11 +57,8 @@ script:
     - echo $PATH
     - which g++-5	|| true
     - ccache --show-stats > ccache_before
-    - python3 make.py -clean -build -unit_test -${COMPILER} -Debug -x86
-    - python3 make.py -clean -build -unit_test -${COMPILER} -Release -x86
-    - python3 make.py -clean -build -unit_test -${COMPILER} -Debug -x64
-    - python3 make.py -clean -build -unit_test -${COMPILER} -Release -x64
-    - python3 make.py -clean -build -unit_test -${COMPILER} -Release -x64 -nosimd
+    - CXX=$COMPILER cmake . -DCPU_INSTRUCTION_SET:STRING=x86 -DCMAKE_BUILD_TYPE=debug 
+    - make
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python3 make.py -clean -build -ios -Debug ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python3 make.py -clean -build -ios -Release; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python3 make.py -clean -build -ios -Release -nosimd; fi
