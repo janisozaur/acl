@@ -59,9 +59,11 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install ccache ; brew upgrade python ; fi
 
 script:
+    - which g++-5	|| true
     - echo $PATH
     - export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
     - echo $PATH
+    - which g++-5	|| true
     - ccache --show-stats > ccache_before
     - python3 make.py -clean -build -unit_test -${COMPILER} -Debug -x86
     - python3 make.py -clean -build -unit_test -${COMPILER} -Release -x86
