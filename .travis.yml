@@ -55,6 +55,7 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo -E apt-add-repository -y "ppa:ubuntu-toolchain-r/test" ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo -E apt-get -yq update ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install ${PACKAGES} ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ls /usr/lib/ccache && sudo -E update-ccache-symlinks && ls /usr/lib/ccache ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install ccache ; brew upgrade python ; fi
 
 script:
