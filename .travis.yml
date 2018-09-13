@@ -38,12 +38,12 @@ matrix:
 
 
 before_install:
-    - if [ "$COMPILER" = "clang4" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
-    - if [ "$COMPILER" = "clang4" ]; then echo "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-4.0 main" | sudo tee -a /etc/apt/sources.list > /dev/null ; fi
-    - if [ "$COMPILER" = "clang5" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
-    - if [ "$COMPILER" = "clang5" ]; then echo "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main" | sudo tee -a /etc/apt/sources.list > /dev/null ; fi
-    - if [ "$COMPILER" = "clang6" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
-    - if [ "$COMPILER" = "clang6" ]; then echo "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-6.0 main" | sudo tee -a /etc/apt/sources.list > /dev/null ; fi
+    - if [ "$COMPILER" = "clang++-4.0" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
+    - if [ "$COMPILER" = "clang++-4.0" ]; then echo "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-4.0 main" | sudo tee -a /etc/apt/sources.list > /dev/null ; fi
+    - if [ "$COMPILER" = "clang++-5.0" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
+    - if [ "$COMPILER" = "clang++-5.0" ]; then echo "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main" | sudo tee -a /etc/apt/sources.list > /dev/null ; fi
+    - if [ "$COMPILER" = "clang++-6.0" ]; then curl -sSL "http://apt.llvm.org/llvm-snapshot.gpg.key" | sudo -E apt-key add - ; fi
+    - if [ "$COMPILER" = "clang++-6.0" ]; then echo "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-6.0 main" | sudo tee -a /etc/apt/sources.list > /dev/null ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo -E apt-add-repository -y "ppa:ubuntu-toolchain-r/test" ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo -E apt-get -yq update ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install ${PACKAGES} ; fi
