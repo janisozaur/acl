@@ -25,15 +25,15 @@ matrix:
 
     # Linux clang4
     - os: linux
-      env: COMPILER=clang++-4.0 PACKAGES="clang-4.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
+      env: COMPILER="clang++-4.0" PACKAGES="clang-4.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # Linux clang5
     - os: linux
-      env: COMPILER=clang++-5.0 PACKAGES="clang-5.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
+      env: COMPILER="clang++-5.0" PACKAGES="clang-5.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # Linux clang6
     - os: linux
-      env: COMPILER=clang++-6.0 PACKAGES="clang-6.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
+      env: COMPILER="clang++-6.0" PACKAGES="clang-6.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
 
 
