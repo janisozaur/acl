@@ -3,35 +3,37 @@ sudo: required
 
 language: cpp
 
+cache: ccache
+
 matrix:
   include:
     # Linux gcc5
     - os: linux
-      env: COMPILER=gcc5 PACKAGES="g++-5 g++-5-multilib g++-multilib"
+      env: COMPILER=gcc5 PACKAGES="g++-5 g++-5-multilib g++-multilib ccache"
 
     # Linux gcc6
     - os: linux
-      env: COMPILER=gcc6 PACKAGES="g++-6 g++-6-multilib g++-multilib"
+      env: COMPILER=gcc6 PACKAGES="g++-6 g++-6-multilib g++-multilib ccache"
 
     # Linux gcc7
     - os: linux
-      env: COMPILER=gcc7 PACKAGES="g++-7 g++-7-multilib g++-multilib"
+      env: COMPILER=gcc7 PACKAGES="g++-7 g++-7-multilib g++-multilib ccache"
 
     # Linux gcc8
     - os: linux
-      env: COMPILER=gcc8 PACKAGES="g++-8 g++-8-multilib g++-multilib"
+      env: COMPILER=gcc8 PACKAGES="g++-8 g++-8-multilib g++-multilib ccache"
 
     # Linux clang4
     - os: linux
-      env: COMPILER=clang4 PACKAGES="clang-4.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib"
+      env: COMPILER=clang4 PACKAGES="clang-4.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # Linux clang5
     - os: linux
-      env: COMPILER=clang5 PACKAGES="clang-5.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib"
+      env: COMPILER=clang5 PACKAGES="clang-5.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # Linux clang6
     - os: linux
-      env: COMPILER=clang6 PACKAGES="clang-6.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib"
+      env: COMPILER=clang6 PACKAGES="clang-6.0 libstdc++-5-dev libc6-dev-i386 g++-5-multilib g++-multilib ccache"
 
     # OS X xcode8
     - os: osx
