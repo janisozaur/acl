@@ -19,4 +19,6 @@ build_script:
 
     IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" (SET COMPILER=vs2017)
 
-    IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" %PYTHON%\\python.exe make.py -build -compiler %COMPILER% -config Release -cpu arm64 -nosimd
+    IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" %PYTHON%\\python.exe make.py -build -compiler %COMPILER% -config Release -cpu arm64
+
+#IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" %PYTHON%\\python.exe make.py -clean -build -compiler %COMPILER% -config Release -cpu arm64 -nosimd
